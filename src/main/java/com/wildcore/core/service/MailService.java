@@ -32,8 +32,6 @@ public class MailService {
     private final TemplateEngine templateEngine;
     private final WildcoreConfiguration configuration;
 
-    @Value("classpath:/static/logo.png")
-    private Resource resourceFile;
 
     @Scheduled(fixedDelay = 5000)
     public void scheduleBetaRequests() throws MessagingException, UnsupportedEncodingException {
@@ -65,6 +63,7 @@ public class MailService {
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("email", request.getEmail());
         attributes.put("company", request.getCompany());
+        attributes.put("phone", request.getPhoneNumber());
         attributes.put("created_at", request.getCreatedAt());
         attributes.put("name", request.getName());
         attributes.put("message", request.getMessage());
@@ -78,7 +77,6 @@ public class MailService {
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
-        helper.addInline("logo.png", resourceFile);
         mailSender.send(message);
     }
 
