@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "spring.mail.from",
+      "type": "java.lang.String",
+      "description": "Set from"
+    },
+    {
+      "name": "wildcore.mail.from",
+      "type": "java.lang.String",
+      "description": "Description for wildcore.mail.from."
+    },
+    {
+      "name": "wildcore.mail.admin.sent",
+      "type": "java.lang.String",
+      "description": "Description for wildcore.mail.admin.sent."
+    },
+  ]
+}

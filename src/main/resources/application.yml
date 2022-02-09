@@ -1,0 +1,40 @@
+server:
+  port: ${SERVER_PORT:8082}
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/java_test
+    username: ${MYSQL_USER:root}
+    driver-class-name: com.mysql.jdbc.Driver
+    password: ${MYSQL_PASSWORD:12345}
+
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:example@example.com}
+    password: ${SMTP_PASSWORD:password}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: ${SMTP_STARTTLS:true}
+          auth: true
+
+wildcore:
+  mail:
+    from: ${SMTP_USERNAME:example@example.com}
+    from_name: ${SMTP_FROM_NAME:From name}
+    user:
+      sent: true
+      template: notify_user.html
+    admin:
+      template: notify_admin.html
+      sent: true
+      addresses:
+       - ${ADMIN_EMAIL:admin@example.com}
+
